@@ -16,6 +16,6 @@ func _update_score_label():
 	if score >= 10:
 		prefix = '0'
 		
-	score_label.text = 'x' + prefix + str(score)
+	score_label.text = 'x ' + prefix + str(score)
 	
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c8i71d1tkbv5"]
+[gd_scene load_steps=20 format=3 uid="uid://c8i71d1tkbv5"]
 
 [ext_resource type="PackedScene" uid="uid://dw4mw0kaanlxh" path="res://scences/player.tscn" id="1_kjsh6"]
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_oo5v5"]
@@ -453,6 +453,8 @@ _data = {
 "move": SubResource("Animation_hybgh")
 }
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5cgo1"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_tqbhg"]
 atlas = ExtResource("9_0epwx")
 region = Rect2(0, 0, 16, 16)
@@ -467,6 +469,8 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v6nvw"]
 
 [node name="Game" type="Node2D"]
 
@@ -562,11 +566,12 @@ text = "Space to jump."
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -131.0
+offset_left = -143.0
 offset_top = 3.0
 offset_right = -9.0
 offset_bottom = 43.0
 grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_5cgo1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HUD/PanelContainer"]
 position = Vector2(18, 19)
@@ -577,8 +582,13 @@ sprite_frames = SubResource("SpriteFrames_67hve")
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("7_j0414")
 theme_override_font_sizes/font_size = 26
-text = "x000"
-horizontal_alignment = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_v6nvw")
+text = "x 000"
+horizontal_alignment = 1
+vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
