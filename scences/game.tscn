@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c8i71d1tkbv5"]
+[gd_scene load_steps=18 format=3 uid="uid://c8i71d1tkbv5"]
 
 [ext_resource type="PackedScene" uid="uid://dw4mw0kaanlxh" path="res://scences/player.tscn" id="1_kjsh6"]
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_oo5v5"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c6x7cbo0n6nuf" path="res://scences/killzone.tscn" id="5_iln45"]
 [ext_resource type="PackedScene" uid="uid://d2pdvnkha5x5h" path="res://scences/slime.tscn" id="6_qdxfn"]
 [ext_resource type="FontFile" uid="uid://dbjl1e6kdxpl6" path="res://assets/fonts/PixelOperator8.ttf" id="7_j0414"]
+[ext_resource type="Texture2D" uid="uid://bped01tsjeycn" path="res://assets/sprites/coin.png" id="9_0epwx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d17y2"]
 texture = ExtResource("2_rdtgw")
@@ -452,6 +453,21 @@ _data = {
 "move": SubResource("Animation_hybgh")
 }
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_tqbhg"]
+atlas = ExtResource("9_0epwx")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_67hve"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tqbhg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Game" type="Node2D"]
 
 [node name="GameManager" type="Node" parent="."]
@@ -497,6 +513,21 @@ position = Vector2(126, -79)
 [node name="Coin4" parent="Coins" instance=ExtResource("4_xhovl")]
 position = Vector2(144, -79)
 
+[node name="Coin5" parent="Coins" instance=ExtResource("4_xhovl")]
+position = Vector2(343, -67)
+
+[node name="Coin7" parent="Coins" instance=ExtResource("4_xhovl")]
+position = Vector2(358, -67)
+
+[node name="Coin6" parent="Coins" instance=ExtResource("4_xhovl")]
+position = Vector2(280, -44)
+
+[node name="Coin8" parent="Coins" instance=ExtResource("4_xhovl")]
+position = Vector2(423, 0)
+
+[node name="Coin9" parent="Coins" instance=ExtResource("4_xhovl")]
+position = Vector2(459, 0)
+
 [node name="Platforms" type="Node" parent="."]
 
 [node name="Platform" parent="Platforms" instance=ExtResource("3_mflgh")]
@@ -524,3 +555,30 @@ offset_bottom = -49.0
 theme_override_fonts/font = ExtResource("7_j0414")
 theme_override_font_sizes/font_size = 8
 text = "Space to jump."
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="PanelContainer" type="PanelContainer" parent="HUD"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -131.0
+offset_top = 3.0
+offset_right = -9.0
+offset_bottom = 43.0
+grow_horizontal = 0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HUD/PanelContainer"]
+position = Vector2(18, 19)
+scale = Vector2(2.125, 2.8125)
+sprite_frames = SubResource("SpriteFrames_67hve")
+
+[node name="ScoreLabel" type="Label" parent="HUD/PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_fonts/font = ExtResource("7_j0414")
+theme_override_font_sizes/font_size = 26
+text = "x000"
+horizontal_alignment = 2
+metadata/_edit_use_anchors_ = true
